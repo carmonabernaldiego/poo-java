@@ -20,6 +20,7 @@ public class Main {
 	}
 	
 	public static boolean esPrimo(int num) {
+		/*
 		if (num == 0 || num == 1 || num == 4) {
 			return false;
 		}
@@ -31,5 +32,24 @@ public class Main {
 		}
 		
 		return true;
+		*/
+		
+		int cont = 0;
+		
+	    for (int i = 1; i <= num; i++) {
+	        if (num % i == 0) {
+	            cont++;
+	        }
+	    }
+	    
+	    if (num == 1) {
+	        return false;
+	    }
+	    
+	    if ( cont == 2) {
+	        return true;
+	    } else {
+	        return false;
+	    }		
 	}
 }

@@ -12,14 +12,14 @@ public class Main {
 		radio = sc.nextDouble();
 		sc.close();
 		
-		String longitud_formato = String.format("%,.2f", longitud(radio));
+		String longitud_formato = String.format("%,.2f", Longitud(radio));
 		System.out.print("\nLa longitud de la circunferencia es : " + longitud_formato);
 		
 		String area_formato = String.format("%,.2f", area(radio));
 		System.out.print("\nEl área de la circunferencia es : " + area_formato);
 	}
 	
-	public static double longitud(double radio) {
+	public static double Longitud(double radio) {
 		double longitud;
 		
 		longitud = (2 * 3.141592 * radio);
