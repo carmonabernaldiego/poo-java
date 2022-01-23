@@ -1,7 +1,6 @@
-package ejercicio7;
+package ejercicio8;
 
 import javax.swing.JOptionPane;
-import java.lang.Math;
 
 public class Main {
 	public static void main(String[] args) {
@@ -11,11 +10,11 @@ public class Main {
 		
 		do{
         	menu = "";
-            menu += "1 .- Calcular área de un triangulo.\n";
+            menu += "1 .- Número de 3 cifras.\n";
             menu += "2 .- Salir.\n";
             menu += "\nEscribe una opción : ";
 		
-			String entrada = JOptionPane.showInputDialog(null, menu, "Área triangulo", JOptionPane.INFORMATION_MESSAGE);
+			String entrada = JOptionPane.showInputDialog(null, menu, "Número de 3 cifras", JOptionPane.INFORMATION_MESSAGE);
 
 			if (entrada != null) {
 				if (!entrada.trim().equals("")) {
@@ -23,7 +22,7 @@ public class Main {
 					
 					switch(opc){
 		            case 1:
-		            	areaTriangulo();
+		            	separarNumero();
 		                break;
 		            case 2:
 		                opc = -1;
@@ -69,26 +68,20 @@ public class Main {
 		JOptionPane.showMessageDialog(null, body, title, JOptionPane.INFORMATION_MESSAGE);
 	}
 	
-	public static void areaTriangulo() {
-		double a, b, c, p, area;
+	public static void separarNumero() {
+		int num;
         
-        a = Double.parseDouble(entradaDatos("Área triangulo", "Escribe la longitud del primer lado del triángulo : "));
+		String resultado;
+		
+        num = Integer.parseInt(entradaDatos("Número de 3 cifras", "Escribe un número : "));
         
-        if (a != -1) {
-        	b = Double.parseDouble(entradaDatos("Área triangulo", "Escribe la longitud del segundo lado del triángulo : "));
-            
-        	if (b != -1) {
-        		c = Double.parseDouble(entradaDatos("Área triangulo", "Escribe la longitud del tercer lado del triángulo : "));
-                
-        		if (c != -1) {
-        			p = (a + b + c) / 2;
-        			
-        			area = Math.sqrt(p * (p - a) * (p - b) * (p - c));
-        			
-        			String area_formato = "El área del triangulo es : " +  String.format("%,.2f", area);
-        			mostrarDatos("Área triangulo", area_formato);		
-        		}
-            }
+        if (num != -1) {
+        	resultado = "Número : " + num;
+        	resultado += "\n\nPrimera cifra : " + (num / 100);
+        	resultado += "\nSegunda cifra : " + ((num / 10) % 10);
+        	resultado += "\nTercera cifra : " + (num % 10);
+        	
+        	mostrarDatos("Número de 3 cifras", resultado);
         }
 	}
 }
