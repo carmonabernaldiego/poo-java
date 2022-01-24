@@ -6,21 +6,21 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		double v;
+		double velocidad;
 		
-		System.out.print("Escribe la velocidad en Km/h : ");
-		v = sc.nextDouble();
+		System.out.print("Escribe la velocidad en km/h : ");
+		velocidad = sc.nextDouble();
 		sc.close();
 				
-		String resultado_formato = String.format("%,.2f", Velocidad(v));
+		String resultado_formato = String.format("%,.2f", Velocidad(velocidad));
 		
-		System.out.println("\n" + v + " Km/h -> " + resultado_formato + " m/s."); 	
+		System.out.println("\n" + velocidad + " km/h -> " + resultado_formato + " m/s."); 	
 	}
 	
-	public static double Velocidad(double v) {
+	public static double Velocidad(double velocidad) {
 		double resultado;
 		
-		resultado = ((v * 1000) / 3600);
+		resultado = ((velocidad * 1000) / 3600);
 		
 		return resultado;
 	}
