@@ -2,12 +2,9 @@ package Empleado;
 
 import java.util.Scanner;
 
-/*
- * 
- * Diego Carmona Bernal | 2 C
- *
- */
+// Diego Carmona Bernal | 2 C
 
+// Clase Empleado. Clase Base de la jerarquía.
 public class Empleado {
     private String nombre;
 
@@ -55,15 +52,15 @@ public class Empleado {
         Tecnico T1 = new Tecnico(leerDatos("Tecnico"));
 
         System.out.println("= + = + = + = + = + = + = + = + = + = + = + = + = + = + = + = + = + =");
-        System.out.println("          " + E1);
+        System.out.println("    " + E1);
         System.out.println("= + = + = + = + = + = + = + = + = + = + = + = + = + = + = + = + = + =");
-        System.out.println("          " + D1);
+        System.out.println("    " + D1);
         System.out.println("= + = + = + = + = + = + = + = + = + = + = + = + = + = + = + = + = + =");
-        System.out.println("          " + OP1);
+        System.out.println("    " + OP1);
         System.out.println("= + = + = + = + = + = + = + = + = + = + = + = + = + = + = + = + = + =");
-        System.out.println("          " + OF1);
+        System.out.println("    " + OF1);
         System.out.println("= + = + = + = + = + = + = + = + = + = + = + = + = + = + = + = + = + =");
-        System.out.println("          " + T1);
+        System.out.println("    " + T1);
         System.out.println("= + = + = + = + = + = + = + = + = + = + = + = + = + = + = + = + = + =");
     }
 
