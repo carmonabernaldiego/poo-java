@@ -14,6 +14,7 @@ public class Main {
         Recipiente recipiente10 = new Recipiente("BORREGO", 1, 35);
 
         ColaRecipiente camion = new ColaRecipiente(30);
+        ColaRecipiente camionTemp = new ColaRecipiente(30);
 
         camion.enqueue(recipiente1);
         camion.enqueue(recipiente2);
@@ -27,33 +28,19 @@ public class Main {
         camion.enqueue(recipiente10);
 
         System.out.println("\n+ - + - + - + - + - + - Camión - + - + - + - + - + - +");
-        System.out.println("Contenido : " + recipiente1.getContenido() + " - Tamaño : " + recipiente1.getTamano()
-                + " - Caducidad : " + recipiente1.getCaducidad());
-        System.out.println("Contenido : " + recipiente2.getContenido() + " - Tamaño : " + recipiente2.getTamano()
-                + " - Caducidad : " + recipiente2.getCaducidad());
-        System.out.println("Contenido : " + recipiente3.getContenido() + " - Tamaño : " + recipiente3.getTamano()
-                + " - Caducidad : " + recipiente3.getCaducidad());
-        System.out.println("Contenido : " + recipiente4.getContenido() + " - Tamaño : " + recipiente4.getTamano()
-                + " - Caducidad : " + recipiente4.getCaducidad());
-        System.out.println("Contenido : " + recipiente5.getContenido() + " - Tamaño : " + recipiente5.getTamano()
-                + " - Caducidad : " + recipiente5.getCaducidad());
-        System.out.println("Contenido : " + recipiente6.getContenido() + " - Tamaño : " + recipiente6.getTamano()
-                + " - Caducidad : " + recipiente6.getCaducidad());
-        System.out.println("Contenido : " + recipiente7.getContenido() + " - Tamaño : " + recipiente7.getTamano()
-                + " - Caducidad : " + recipiente7.getCaducidad());
-        System.out.println("Contenido : " + recipiente8.getContenido() + " - Tamaño : " + recipiente8.getTamano()
-                + " - Caducidad : " + recipiente8.getCaducidad());
-        System.out.println("Contenido : " + recipiente9.getContenido() + " - Tamaño : " + recipiente9.getTamano()
-                + " - Caducidad : " + recipiente9.getCaducidad());
-        System.out.println("Contenido : " + recipiente10.getContenido() + " - Tamaño : " + recipiente10.getTamano()
-                + " - Caducidad : " + recipiente10.getCaducidad());
+        while (!camion.isEmpty()) {
+            Recipiente r = camion.dequeue();
+            camionTemp.enqueue(r);
+            System.out.println("Contenido : " + r.getContenido() + " - Tamaño : " + r.getTamano() + " - Caducidad : "
+                    + r.getCaducidad());
+        }
 
         PilaRecipiente refrigerador1 = new PilaRecipiente(30);
         PilaRecipiente refrigerador2 = new PilaRecipiente(30);
         PilaRecipiente refrigerador3 = new PilaRecipiente(30);
 
-        while (!camion.isEmpty()) {
-            Recipiente recipiente = camion.dequeue();
+        while (!camionTemp.isEmpty()) {
+            Recipiente recipiente = camionTemp.dequeue();
 
             if (recipiente.getContenido() == "RES") {
                 refrigerador1.push(recipiente);
