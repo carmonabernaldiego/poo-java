@@ -2,7 +2,7 @@ package ordenamiento;
 
 public class Main {
 	public static void main (String[] args) {
-		PilaChar miPila = new PilaChar(10);
+		Pila miPila = new Pila(10);
 		
 		miPila.push(9);
 		miPila.push(3);
@@ -15,7 +15,7 @@ public class Main {
 	    miPila.push(23);
 	    miPila.push(44);
 	   
-	    PilaChar miPilaTmp = new PilaChar(10);
+	    Pila miPilaTmp = new Pila(10);
 	    
 	    while(!miPila.isEmpty()) {
 	    	int aux = miPila.pop();
