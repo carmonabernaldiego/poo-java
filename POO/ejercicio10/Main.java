@@ -12,9 +12,9 @@ public class Main {
 			menu = "";
 			menu += "1 .- Validar hora.\n";
 			menu += "2 .- Salir.\n";
-			menu += "\nEscribe una opci髇 : ";
+			menu += "\nEscribe una opci贸n : ";
 
-			String entrada = JOptionPane.showInputDialog(null, menu, "Validaci髇 hora",
+			String entrada = JOptionPane.showInputDialog(null, menu, "Validaci贸n hora",
 					JOptionPane.INFORMATION_MESSAGE);
 
 			if (entrada != null) {
@@ -26,46 +26,50 @@ public class Main {
 					}
 
 					switch (opc) {
-					case 1:
-						int hora, minuto, segundo;
+						case 1:
+							int hora, minuto, segundo;
 
-						hora = Integer.parseInt(entradaDatos("Validaci髇 hora", "Escribe la hora : "));
+							hora = Integer.parseInt(entradaDatos("Validaci贸n hora", "Escribe la hora : "));
 
-						if (hora != -1) {
-							minuto = Integer.parseInt(entradaDatos("Validaci髇 hora", "Escribe los minutos : "));
+							if (hora != -1) {
+								minuto = Integer.parseInt(entradaDatos("Validaci贸n hora", "Escribe los minutos : "));
 
-							if (minuto != -1) {
-								segundo = Integer.parseInt(entradaDatos("Validaci髇 hora", "Escribe los segundos : "));
+								if (minuto != -1) {
+									segundo = Integer
+											.parseInt(entradaDatos("Validaci贸n hora", "Escribe los segundos : "));
 
-								if (segundo != -1) {
-									String resultado_formato = "";
-									
-									if(validarHora(hora, minuto, segundo)) {
-										resultado_formato = "La hora " + hora + ":" + minuto + ":" + segundo + " es correcta.";
-									} else {
-										resultado_formato = "La hora " + hora + ":" + minuto + ":" + segundo + " es incorrecta.";
+									if (segundo != -1) {
+										String resultado_formato = "";
+
+										if (validarHora(hora, minuto, segundo)) {
+											resultado_formato = "La hora " + hora + ":" + minuto + ":" + segundo
+													+ " es correcta.";
+										} else {
+											resultado_formato = "La hora " + hora + ":" + minuto + ":" + segundo
+													+ " es incorrecta.";
+										}
+										mostrarDatos("Validaci贸n hora", resultado_formato);
 									}
-									mostrarDatos("Validaci髇 hora", resultado_formato);
 								}
 							}
-						}
-						break;
-					case 2:
-						opc = -1;
-						break;
-					default:
-						JOptionPane.showMessageDialog(null, "pci髇 incorrecta!", "Error", JOptionPane.ERROR_MESSAGE);
-						break;
+							break;
+						case 2:
+							opc = -1;
+							break;
+						default:
+							JOptionPane.showMessageDialog(null, "隆Opci贸n incorrecta!", "Error",
+									JOptionPane.ERROR_MESSAGE);
+							break;
 					}
 				} else {
-					JOptionPane.showMessageDialog(null, "scribe una opcion correcta!", "Error",
+					JOptionPane.showMessageDialog(null, "隆Escribe una opcion correcta!", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}
 			} else {
 				opc = -1;
 			}
 		} while (opc != -1);
-		JOptionPane.showMessageDialog(null, "Fin de la Aplicaci髇.", "Informaci髇", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Fin de la Aplicaci贸n.", "Informaci贸n", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public static String entradaDatos(String title, String body) {
@@ -116,11 +120,10 @@ public class Main {
 
 	public static boolean validarHora(int hora, int minuto, int segundo) {
 		boolean validar;
-		
+
 		if ((hora >= 0 && hora < 24) && (minuto >= 0 && minuto < 60) && (segundo >= 0 && segundo < 60)) {
 			validar = true;
-		}
-		else{
+		} else {
 			validar = false;
 		}
 
