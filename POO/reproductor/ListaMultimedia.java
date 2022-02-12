@@ -1,4 +1,4 @@
-package reproductor;
+package Reproductor;
 
 public class ListaMultimedia {
     private Multimedia[] lista;
@@ -33,5 +33,13 @@ public class ListaMultimedia {
             s += lista[i].toString() + "\n\n";
         }
         return s;
-    } 
+    }
+
+    public String toStringMusic() {
+        String s = "";
+        for (int i = 0; i < contador; i++) {
+            s += lista[i].toStringMusic() + "\n\n";
+        }
+        return s;
+    }
 }

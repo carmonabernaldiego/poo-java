@@ -1,4 +1,4 @@
-package reproductor;
+package Reproductor;
 
 public class Pelicula extends Multimedia {
     private String actorPrincipal;
