@@ -33,6 +33,9 @@ public class Main {
         System.out.println("elemento borrado: " + borrado);
         System.out.println(listaRecipiente);
 
+        System.out.println("-----------------");
+        Recipiente buscar = new Recipiente("clavel",1,3);
+        System.out.println("Buscar: " + listaRecipiente.contains(buscar));
     }
 
     private static void imprimirRecipiente(ArrayList<Recipiente> listaRecipiente){

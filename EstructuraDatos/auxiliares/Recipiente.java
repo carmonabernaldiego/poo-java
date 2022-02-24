@@ -1,9 +1,26 @@
 package auxiliares;
 
+import java.util.Objects;
+
 public class Recipiente {
     private String contenido;
     private int tamano;
     private int peso;
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) {
+            return true;
+        }
+
+        if(o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Recipiente that = (Recipiente) o; // cast
+
+        return getTamano() == that.getTamano() && Objects.equals(getContenido(), that.getContenido());
+    }
 
     public Recipiente(String contenido, int tamano, int peso) {
         this.contenido = contenido;
