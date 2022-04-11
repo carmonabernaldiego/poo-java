@@ -1,6 +1,9 @@
 package banco;
 
+import java.text.DecimalFormat;
+
 public abstract class Opciones implements Menu {
+	DecimalFormat decimalFormat = new DecimalFormat("#00.00");
 	protected int nip;
 	protected String nombreCuenta;
 	protected double saldoCuenta;

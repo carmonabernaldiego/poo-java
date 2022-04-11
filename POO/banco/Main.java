@@ -1,6 +1,7 @@
 package banco;
 
 import java.io.*;
+import java.text.DecimalFormat;
 
 public class Main {
 	public static InputStreamReader leer = new InputStreamReader(System.in);
@@ -8,10 +9,14 @@ public class Main {
 	public static BufferedReader teclado = new BufferedReader(leer);
 
 	public static void main(String[] args) throws IOException {
+		DecimalFormat decimalFormat = new DecimalFormat("#00.00");
+
+		Cajero cajero = new Cajero( 20000);
+
 		boolean error, buscar = false;
 
 		int cuenta = 0;
-		int opc, elemento = -1;
+		int opc = 0, elemento = -1;
 		int intentos = 0, dinero = 0;
 
 		Opciones[] opcPolimorfismo = new Opciones[10];
@@ -64,13 +69,24 @@ public class Main {
 			}
 
 			do {
-				opcPolimorfismo[elemento].Inicio();
 
 				do {
+					opcPolimorfismo[elemento].Inicio();
+
+					error = false;
+
 					System.out.println("\n\t\t¿Que operación desea realizar ?");
 
-					opc = Integer.parseInt(teclado.readLine());
-				} while ((opc < 1) || (opc > 4));
+					try {
+						opc = Integer.parseInt(teclado.readLine());
+					} catch (NumberFormatException e) {
+						error = true;
+
+						System.out.println("\n¡No debe ingresar ninguna letra!\"");
+
+						opc = 0;
+					}
+				} while ((opc < 1) || (opc > 4) && error);
 
 				switch (opc) {
 					case 1 -> opcPolimorfismo[elemento].Consulta();
@@ -80,8 +96,10 @@ public class Main {
 						do {
 							error = false;
 
+							System.out.println("\n\t\t\t\tSu Saldo : " + decimalFormat.format(opcPolimorfismo[elemento].saldoCuenta));
 							System.out.println("\n\t\t\t\tRetiro de Efectivo");
 							System.out.println("\n(1) 50.00   (2) 100.00   (3) 200.00   (4) 500.00   (5) 1000.00   (6) Cancelar");
+							System.out.println("\n(0) Otra cantidad");
 							System.out.println("\nIngrese opción :");
 
 							try {
@@ -93,7 +111,21 @@ public class Main {
 							}
 						} while (error);
 
-						if (opcDinero == 1){
+						if (opcDinero == 0) {
+							do {
+								error = false;
+
+								System.out.println("\nIngrese el monto a retirar en múltiplos de 100 (solo billetes) :");
+
+								try {
+									dinero = Integer.parseInt(teclado.readLine());
+								} catch (NumberFormatException e) {
+									System.out.println("¡Ingrese solo números!");
+
+									error = true;
+								}
+							} while (error);
+						} else if (opcDinero == 1){
 							dinero = 50;
 						} else if (opcDinero == 2) {
 							dinero = 100;
@@ -107,15 +139,21 @@ public class Main {
 							break;
 						}
 
-						if ((dinero < 50) || (dinero > 5000)) {
-							System.out.println("\n¡El monto mínimo de retiro es de $50.00 y el máximo es de $5000.00!");
+						if ((dinero < 50) || (dinero > 6000)) {
+							System.out.println("\n¡El monto mínimo de retiro es de $50.00 y el máximo es de $6000.00!");
 						} else if(dinero > opcPolimorfismo[elemento].saldoCuenta) {
 							System.out.println("\n¡Fondos insuficientes!");
 						} else {
-							if (opcPolimorfismo[elemento].Retiro(dinero)) {
-								System.out.println("\n¡Operación exitosa!");
+							if (cajero.getDineroCajero() >= dinero) {
+								if (opcPolimorfismo[elemento].Retiro(dinero)) {
+									if(cajero.RanuraRetiro(dinero)) {
+										System.out.println("\n¡Operación exitosa!");
+									}
+								} else {
+									System.out.println("\n¡Fondos insuficientes!");
+								}
 							} else {
-								System.out.println("\n¡Fondos insuficientes!");
+								System.out.println("\nDisculpe, por el momento no podemos entregar dinero.");
 							}
 						}
 					}
@@ -128,7 +166,7 @@ public class Main {
 							try {
 								dinero = Integer.parseInt(teclado.readLine());
 							} catch (NumberFormatException e) {
-								System.out.println("Ingrese solo números");
+								System.out.println("¡Ingrese solo números!");
 
 								error = true;
 							}

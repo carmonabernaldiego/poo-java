@@ -12,7 +12,7 @@ public class Cliente extends Opciones {
 	}
 
 	public int getId() {
-		return nip;
+		return super.nip;
 	}
 
 	public void setNombre(String nombre) {
@@ -20,7 +20,7 @@ public class Cliente extends Opciones {
 	}
 
 	public String getNombre() {
-		return nombreCuenta;
+		return super.nombreCuenta;
 	}
 
 	public void setSaldo(double saldo) {
@@ -28,7 +28,7 @@ public class Cliente extends Opciones {
 	}
 
 	public double getSaldo() {
-		return saldoCuenta;
+		return super.saldoCuenta;
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class Cliente extends Opciones {
 	@Override
 	public void Consulta() {
 		System.out.println("\n\nSeñor(a)                     " + getNombre());
-		System.out.println("\nSu saldo es                  $" + getSaldo());
+		System.out.println("\nSu saldo es                  $" + String.format("%.2f", getSaldo()));
 
 		System.out.println("\nIngrese (1) y presione enter para continuar.");
 		Scanner s = new Scanner(System.in);
