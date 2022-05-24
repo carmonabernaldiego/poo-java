@@ -1,3 +1,3 @@
 # POO Java
 
-Curso de Programación Orientada a Objetos y Estructura de Datos.
+Curso de Programación Orientada a Objetos y Estructura de Datos
